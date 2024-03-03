@@ -1,0 +1,11 @@
+
+.block{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+}
+.active{
+    background: #616161;
+}

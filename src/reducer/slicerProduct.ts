@@ -29,7 +29,6 @@ export const slicerProduct = createSlice({
     extraReducers(builder) {
         builder.addCase(getItems.pending, (state) => {
             state.loading = true;
-            itemsAdapter.removeAll(state);
         }),
             builder.addCase(getItems.fulfilled, (state, action) => {
                 state.loading = false;
@@ -37,6 +36,7 @@ export const slicerProduct = createSlice({
                 if (action.payload.error) {
                     state.error = true;
                 } else if (action.payload.result) {
+                    itemsAdapter.removeAll(state);
                     itemsAdapter.addMany(state, action.payload.result);
                 }
             }),

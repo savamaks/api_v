@@ -40,7 +40,6 @@ const Main = () => {
     //если в ответе на запрос ID ПРОДУКТА приходит ответ 500, то запрос повторяется с последними данными
     useEffect(() => {
         if (appSlicer.error) {
-
             dispatch(getIds(appSlicer.dataRequest));
         }
     }, [appSlicer.error]);
@@ -56,7 +55,7 @@ const Main = () => {
         <section className={s.section}>
             <Filter />
             {appSlicer.ids.length > 50 && <Paginator />}
-            {slicerProduct.ids.length > 0 && appSlicer.ids.length > 0 ? (
+            {appSlicer.ids.length > 0 ? (
                 <div className={s.box}>
                     <div className={s.card}>
                         <h2 className={s.text}>ID</h2>
@@ -64,19 +63,27 @@ const Main = () => {
                         <h2 className={s.text}>Price</h2>
                         <h2 className={s.text}>Brend</h2>
                     </div>
-                    {slicerProduct.ids.map((el: string, index: number) => {
-                        return (
-                            <div className={s.card} key={index}>
-                                <p className={s.text}>{slicerProduct.entities[el].id}</p>
-                                <p className={s.text}>{slicerProduct.entities[el].product}</p>
-                                <p className={s.text}>{slicerProduct.entities[el].price} р.</p>
-                                <p className={s.text}>{slicerProduct.entities[el].brand !== null ? slicerProduct.entities[el].brand : "-"}</p>
-                            </div>
-                        );
-                    })}
+                    {slicerProduct.ids.length > 0 ? (
+                        <>
+                            {slicerProduct.ids.map((el: string, index: number) => {
+                                return (
+                                    <div className={!slicerProduct.loading ? s.card : s.cardLoader} key={index}>
+                                        <p className={!slicerProduct.loading ? s.text : s.deactive}>{slicerProduct.entities[el].id}</p>
+                                        <p className={!slicerProduct.loading ? s.text : s.deactive}>{slicerProduct.entities[el].product}</p>
+                                        <p className={!slicerProduct.loading ? s.text : s.deactive}>{slicerProduct.entities[el].price} р.</p>
+                                        <p className={!slicerProduct.loading ? s.text : s.deactive}>
+                                            {slicerProduct.entities[el].brand !== null ? slicerProduct.entities[el].brand : "-"}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </>
+                    ) : (
+                        <Loader />
+                    )}
                 </div>
             ) : (
-                <>{appSlicer.ids.length > 0 || appSlicer.loading ? <Loader /> : <h3>Нет данных повторите запрос c другими параметрами..</h3>}</>
+                <>{appSlicer.ids.length > 0 || appSlicer.loading ? <Loader /> : <h3>Нет данных. Повторите запрос c другими параметрами..</h3>}</>
             )}
         </section>
     );

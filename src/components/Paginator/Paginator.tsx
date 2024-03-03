@@ -3,7 +3,6 @@ import s from "./Paginator.module.css";
 import { getItems } from "../../api/getItems";
 import { changeDataRequest, changePage } from "../../reducer/appSlice";
 import { useAppDispatch, useAppSelector } from "../../reducer/hooks";
-import { removeAll } from "../../reducer/slicerProduct";
 
 const Paginator = () => {
     const dispatch = useAppDispatch();
@@ -29,7 +28,6 @@ const Paginator = () => {
                                 params: { ids: appSlicer.ids.slice(startPage, startPage + 50) },
                             };
 
-                            dispatch(removeAll());
                             dispatch(changePage(index + 1));
                             dispatch(getItems(data));
                             dispatch(changeDataRequest(data));
@@ -56,7 +54,6 @@ const Paginator = () => {
                             action: "get_items",
                             params: { ids: appSlicer.ids.slice(0, 50) },
                         };
-                        dispatch(removeAll());
                         dispatch(changePage(1));
                         dispatch(getItems(data));
                         dispatch(changeDataRequest(data));
@@ -79,7 +76,6 @@ const Paginator = () => {
                             action: "get_items",
                             params: { ids: appSlicer.ids.slice(appSlicer.ids.length - 50) },
                         };
-                        dispatch(removeAll());
                         dispatch(changePage(Math.ceil(appSlicer.ids.length / 50)));
                         dispatch(getItems(data));
                         dispatch(changeDataRequest(data));

@@ -70,7 +70,7 @@ const Main = () => {
                                     <div className={!slicerProduct.loading ? s.card : s.cardLoader} key={index}>
                                         <p className={!slicerProduct.loading ? s.text : s.deactive}>{slicerProduct.entities[el].id}</p>
                                         <p className={!slicerProduct.loading ? s.text : s.deactive}>{slicerProduct.entities[el].product}</p>
-                                        <p className={!slicerProduct.loading ? s.text : s.deactive}>{slicerProduct.entities[el].price} р.</p>
+                                        <p className={!slicerProduct.loading ? s.text : s.deactive}>{slicerProduct.entities[el].price}р.</p>
                                         <p className={!slicerProduct.loading ? s.text : s.deactive}>
                                             {slicerProduct.entities[el].brand !== null ? slicerProduct.entities[el].brand : "-"}
                                         </p>

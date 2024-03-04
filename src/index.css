@@ -59,7 +59,12 @@ button {
         border-color: inherit
     }
 }
+p{
+    @media (max-width:800px) {
+        font-size: 13px;
 
+    }
+}
 
 @media (prefers-color-scheme: light) {
     :root {

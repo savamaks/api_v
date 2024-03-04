@@ -4,7 +4,7 @@ import { getBrend } from "../api/getBrend";
 
 interface appState {
     ids: Array<string>;
-    entities: any
+    entities: Record<string, IIds>;
     loading: boolean;
     error: boolean;
     loadingFilterBrand: boolean;
@@ -19,11 +19,11 @@ interface appState {
     filterBrend: Array<string | any>;
     selectBrend: string;
 }
-interface IProduct {
+interface IIds {
     id: string;
 }
 const appAdapter = createEntityAdapter({
-    selectId: (product: IProduct) => product.id,
+    selectId: (product: IIds) => product.id,
 });
 
 const initialState: appState = appAdapter.getInitialState({
@@ -67,7 +67,6 @@ export const appSlicer = createSlice({
         builder.addCase(getIds.pending, (state) => {
             state.loading = true;
             appAdapter.removeAll(state);
-
         }),
             builder.addCase(getIds.fulfilled, (state, action) => {
                 state.loading = false;

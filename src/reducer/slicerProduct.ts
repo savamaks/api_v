@@ -3,12 +3,15 @@ import { getItems } from "../api/getItems";
 
 interface appState {
     ids: Array<string>;
-    entities: any;
+    entities: Record<string,IProduct>;
     loading: boolean;
     error: boolean;
 }
 interface IProduct {
     id: string;
+    brand: string;
+    product: string;
+    price: string;
 }
 const itemsAdapter = createEntityAdapter({
     selectId: (product: IProduct) => product.id,

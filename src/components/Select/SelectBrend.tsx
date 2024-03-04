@@ -36,7 +36,7 @@ const SelectBrend = () => {
 
     return (
         <form className={s.form}>
-            <label className={s.label}>Brend:</label>
+            <label className={s.label}>Brand:</label>
             <select value={appSlicer.selectBrend} disabled={slicerProduct.loading ? true : false} className={s.select} onChange={changeSelect}>
                 <option className={s.option} value="All">
                     All

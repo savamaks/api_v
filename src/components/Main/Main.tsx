@@ -61,7 +61,7 @@ const Main = () => {
                         <h2 className={s.text}>ID</h2>
                         <h2 className={s.text}>Name</h2>
                         <h2 className={s.text}>Price</h2>
-                        <h2 className={s.text}>Brend</h2>
+                        <h2 className={s.text}>Brand</h2>
                     </div>
                     {slicerProduct.ids.length > 0 ? (
                         <>

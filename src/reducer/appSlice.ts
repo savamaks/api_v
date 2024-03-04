@@ -4,7 +4,7 @@ import { getBrend } from "../api/getBrend";
 
 interface appState {
     ids: Array<string>;
-    entities: any;
+    entities: any
     loading: boolean;
     error: boolean;
     loadingFilterBrand: boolean;

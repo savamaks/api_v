@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { authorizationString } from "../handlerFunc/passwordAPI";
+import { auth } from "../handlerFunc/passwordAPI";
 
 export const getIds = createAsyncThunk("getId", async (value: any) => {
-    const res = await fetch("http://api.valantis.store:40000/", {
+    const res = await fetch("https://api.valantis.store:41000/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "X-Auth": authorizationString,
+            "X-Auth": auth,
         },
         body: JSON.stringify(value),
     });
